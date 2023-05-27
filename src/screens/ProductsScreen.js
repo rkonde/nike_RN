@@ -1,7 +1,7 @@
 import { Image, StyleSheet, View, FlatList } from "react-native";
 import products from "../data/products";
 
-export default function ProductsScreen() {
+const ProductsScreen = () => {
   return (
     <FlatList
       data={products}
@@ -13,7 +13,7 @@ export default function ProductsScreen() {
       numColumns={2}
     />
   );
-}
+};
 
 const styles = StyleSheet.create({
   itemContainer: {
@@ -25,3 +25,5 @@ const styles = StyleSheet.create({
     aspectRatio: 1,
   },
 });
+
+export default ProductsScreen;
