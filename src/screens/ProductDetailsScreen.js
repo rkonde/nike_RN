@@ -11,9 +11,11 @@ import {
 import { Ionicons } from "@expo/vector-icons";
 
 import products from "../data/products";
+import { useNavigation } from "@react-navigation/native";
 
-const ProductDetailsScreen = () => {
-  const product = products[0];
+const ProductDetailsScreen = (props) => {
+  const navigation = useNavigation();
+  const product = products[props.route.params?.id - 1];
   const { width } = useWindowDimensions();
 
   const addToCart = () => {
@@ -45,7 +47,10 @@ const ProductDetailsScreen = () => {
         <Text style={styles.buttonText}>Add to cart</Text>
       </Pressable>
 
-      <Pressable style={styles.icon}>
+      <Pressable
+        style={styles.icon}
+        onPress={() => navigation.navigate("Products")}
+      >
         <Ionicons name="close" size={24} color="white" />
       </Pressable>
     </ScrollView>
@@ -70,13 +75,13 @@ const styles = StyleSheet.create({
   },
   button: {
     backgroundColor: "black",
-    position: "absolute",
     bottom: 30,
     width: "90%",
     alignSelf: "center",
     alignItems: "center",
     padding: 20,
     borderRadius: 100,
+    marginTop: 20,
   },
   buttonText: {
     color: "white",
